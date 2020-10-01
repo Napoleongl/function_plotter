@@ -23,10 +23,10 @@ ui <- fluidPage(
       #uiOutput("textbox_ui"),
       fluidRow(
         shinydashboard::box(width = 11,title = "Functions",
-            textInput("f1", NULL, width = "100%", placeholder = "2+4*x", value = "5x^2+x-4"),
-            textInput("f2", NULL, width = "100%", placeholder = "2+4*x", value = "3x-2"),
-            textInput("f3", NULL, width = "100%", placeholder = "2+4*x", value = "2*x-1"),
-            textInput("f4", NULL, width = "100%", placeholder = "2+4*x", value = "x*sin(x*5)-exp(x)/2")
+            textInput("f1", NULL, width = "100%", placeholder = "5x^2+x-4"),
+            textInput("f2", NULL, width = "100%", placeholder = "3x-2"),
+            textInput("f3", NULL, width = "100%", placeholder = "2*x-1"),
+            textInput("f4", NULL, width = "100%", placeholder = "x*sin(x*5)-exp(x)/2")
             )
       ),
       fluidRow(
@@ -38,7 +38,14 @@ ui <- fluidPage(
             )
         )
       ),
-      actionButton("plot_funs", "Plot functions", icon("line-chart"))
+      actionButton("plot_funs", "Plot functions", icon("line-chart")),
+      fluidRow(
+        shinydashboard::box(width = 11,title = "Hints",
+                            a("Use R-style functions, for instance as found ", href="https://www.statmethods.net/management/functions.html", "here."),
+                            br(),
+                            a(href = "https://github.com/Napoleongl/function_plotter", "Code on github")
+        )
+      )
       ),
     mainPanel(
       plotOutput("function_plot")
@@ -62,4 +69,4 @@ server <- function(input, output){
   })
 }
 
-shinyApp(ui, server, , options = list(height = 1080))
+shinyApp(ui, server, options = list(height = 1080))
