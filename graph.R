@@ -1,4 +1,4 @@
-graph_function <- function(function_values, colours = NULL, fill_under = FALSE){
+graph_function <- function(function_values, colours = NULL){
   function_values_long <- melt(function_values, id.vars = "x", variable.name = "Function", 
                           value.name = "y")
   if(is.null(colours)){
@@ -20,13 +20,6 @@ graph_function <- function(function_values, colours = NULL, fill_under = FALSE){
   if(xbold){
     gg <- gg + geom_hline(yintercept = 0, colour = "grey60", size = rel(0.6)) 
   }
-  # If filled curves are requested
-  if(fill_under){
-    fills <- alpha(colours, 0.35)
-    gg <- gg + geom_area(aes(fill = Function), size = rel(1)) +
-      scale_fill_manual("", values = fills)
-  } else{
   gg <- gg + geom_line(size = rel(1)) 
-  } 
   gg 
 }
