@@ -1,4 +1,4 @@
-#Function plotter app
+# Function plotter app
 
 This is the repository for code used in [a Shinyapp to plot function curves](https://napoleongl.shinyapps.io/function_plotter/) using gglpot2.
 
